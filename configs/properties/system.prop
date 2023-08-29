@@ -79,3 +79,8 @@ persist.debug.wfd.enable=1
 ro.spark.group.url=https://t.me/alexveuxchat
 ro.spark.maintainer=Semina Alexandru(semialex16)
 ro.spark.maintainer.username=semialex16
+
+# Blur configs
+ro.surface_flinger.supports_background_blur=1
+persist.sys.sf.disable_blurs=1
+ro.sf.blurs_are_expensive=1
