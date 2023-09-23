@@ -73,6 +73,9 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/hidl/framew
 ODM_MANIFEST_SKUS += nfc
 ODM_MANIFEST_NFC_FILES := $(DEVICE_PATH)/configs/hidl/manifest_nfc.xml
 
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):init_xiaomi_veux
 TARGET_RECOVERY_DEVICE_MODULES := init_xiaomi_veux
@@ -84,7 +87,6 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 KERNEL_LD := LD=ld.lld
-BOARD_RAMDISK_USE_LZ4 := true
 
 BOARD_BOOT_HEADER_VERSION := 3
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -159,6 +161,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := holi
 
+# Lineage Health
+TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/mmi_charging_enable
+
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/configs/properties/product.prop
@@ -181,16 +186,13 @@ TARGET_USERIMAGES_USE_F2FS := true
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # Security Patch Level
-VENDOR_SECURITY_PATCH := 2023-06-01
+VENDOR_SECURITY_PATCH := 2023-09-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-
-# SurfaceFlinger
-TARGET_USE_AOSP_SURFACEFLINGER := true
 
 # Verified Boot
 BOARD_AVB_ENABLE := true

@@ -1,4 +1,4 @@
-# All unpinned blobs below are extracted from veux-user 13 TKQ1.221114.001 V14.0.2.0.TKCMIXM release-keys
+# All unpinned blobs below are extracted from veux-user 13 TKQ1.221114.001 V14.0.3.0.TKCMIXM release-keys
 
 # ACDB
 vendor/etc/acdbdata/MTP/holi-mtpsku1-snd-card/MTP_SKU1_Bluetooth_cal.acdb
@@ -952,6 +952,9 @@ vendor/lib64/vendor.qti.hardware.fm@1.0.so
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
 vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
+
+# GMS
+product/etc/permissions/privapp-permissions-gms.xml
 
 # Graphics (Adreno)
 vendor/gpu/kbc/sequence_manifest.bin

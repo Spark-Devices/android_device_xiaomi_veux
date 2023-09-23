@@ -16,6 +16,9 @@ persist.vendor.cne.feature=1
 # Disable Skia tracing by default
 debug.hwui.skia_atrace_enabled=false
 
+# FEAS
+ro.feas.enable=true
+
 # FS-verity
 ro.apk_verity.mode=2
 
@@ -30,6 +33,21 @@ persist.sys.brightness.low.gamma=true
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
+
+# Log
+log.tag.CHIUSECASE=ERROR
+persist.log.tag.bt_stack=S
+persist.log.tag.CamX=S
+persist.log.tag.CHIUSECASE=S
+persist.log.tag.cnss-daemon=S
+persist.log.tag.CVP=S
+persist.log.tag.DeviceStatisticsService=S
+persist.log.tag.DrmLibTime=S
+persist.log.tag.FastChargingPreferenceController=S
+persist.log.tag.QC-time-services=S
+persist.log.tag.ResourcesCompat=S
+persist.log.tag.SYNX-UMD=S
+persist.log.tag.ultrasound_extn=S
 
 # LMK
 ro.config.low_ram=false
@@ -71,6 +89,9 @@ persist.radio.is_vonr_enabled_1=true
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=true
+
+# SurfaceFlinger
+ro.sf.skip_set_active_mode_when_off=1
 
 # WiFi Display
 persist.debug.wfd.enable=1

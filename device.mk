@@ -7,11 +7,11 @@
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
-
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -145,6 +145,13 @@ PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 USE_DEX2OAT_DEBUG := false
 
+# Dex to make OTA go faster
+PRODUCT_VENDOR_PROPERTIES += \
+    dalvik.vm.boot-dex2oat-cpu-set=1,2,3,4,5,6,7 \
+    dalvik.vm.boot-dex2oat-threads=7 \
+    dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7 \
+    dalvik.vm.image-dex2oat-threads=8
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
@@ -250,6 +257,10 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor \
     android.system.keystore2
 
+# Lineage Health
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+    
 # Light
 PRODUCT_PACKAGES += \
     android.hardware.light-service.xiaomi
@@ -282,7 +293,9 @@ PRODUCT_PACKAGES += \
 
 # Net
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
+    android.system.net.netd@1.1.vendor \
+    libloc_net_iface \
+    libloc_net_iface.vendor
 
 # Neural Networks
 PRODUCT_PACKAGES += \
@@ -329,6 +342,7 @@ PRODUCT_PACKAGES += \
     CarrierConfigOverlayVeux \
     DialerOverlayVeux \
     FrameworksResOverlayVeux \
+    NfcOverlayVeux \
     SettingsOverlayVeux \
     SettingsProviderOverlayVeux \
     SettingsProviderOverlayS88006AA1 \
@@ -338,7 +352,6 @@ PRODUCT_PACKAGES += \
     SettingsProviderOverlayS88106BA1 \
     SettingsProviderOverlayS88107BA1 \
     SystemUIOverlayVeux \
-    SettingsLibOverlayVeux \
     TelephonyOverlayVeux \
     TetheringResOverlayVeux \
     WifiOverlayVeux \
@@ -359,6 +372,7 @@ PRODUCT_PACKAGES += \
 
 # Perf
 PRODUCT_PACKAGES += \
+    vendor.qti.hardware.perf@2.2 \
     vendor.qti.hardware.perf@2.2.vendor
 
 # Permissions
